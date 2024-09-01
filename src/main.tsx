@@ -8,6 +8,7 @@ import './index.css'
 import ChatPage from './pages/ChatPage'
 import AuthRouter from './routers/AuthRouter'
 import { AuthProvider } from './auth/AuthProvider'
+import AppRouter from './routers/AppRouter'
 
 const router = createBrowserRouter([
   {
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/auth/*',
-    element: <AuthRouter />,
+    element: <AuthRouter />,    
   },
 ])
 
@@ -25,7 +26,8 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
+      <AppRouter />
+      {/* <RouterProvider router={router} /> */}
     </AuthProvider>
   </React.StrictMode>,
 )

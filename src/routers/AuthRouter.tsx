@@ -4,6 +4,7 @@ import RegisterPage from "../pages/RegisterPage";
 import '../css/login-register.css'
 
 export default function AuthRouter() {
+
   return (
     <>
       <div className="limiter">
