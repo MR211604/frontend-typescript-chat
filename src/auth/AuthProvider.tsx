@@ -65,12 +65,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         name: null,
         email: null,
       })
-      console.log('no hay token')
       return false
     }
 
     const response = await fetchWithToken('renew')
     if (response.ok) {
+      localStorage.setItem('token', response.token);
       setAuth({
         _id: response.user._id,
         checking: false,
