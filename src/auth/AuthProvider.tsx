@@ -1,4 +1,4 @@
-import { createContext, JSX, useCallback, useState } from "react"
+import { createContext, useCallback, useState } from "react"
 import { fetchWithoutToken, fetchWithToken } from "../helpers/fetch";
 import { InitialState } from "../types/types";
 
@@ -91,7 +91,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
-  const logout = () => { }
+  const logout = () => {
+    localStorage.removeItem('token')
+    setAuth({
+      _id: null,
+      checking: false,
+      logged: false,
+      name: null,
+      email: null
+    })
+  }
 
   return (
     <AuthContext.Provider value={{

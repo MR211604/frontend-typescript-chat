@@ -1,20 +1,27 @@
+import { useContext } from "react"
+import { AuthContext, AuthContextType } from "../auth/AuthProvider"
+
 export default function SearchBox() {
+
+  const { Auth, logout } = useContext(AuthContext) as AuthContextType
+
+
+
   return (
     <>
-      {/* <!-- Searchbox inicio --> */}
       <div className="headind_srch">
         <div className="recent_heading mt-2">
-          <h4>Recientes</h4>
+          <h4>{Auth.name}</h4>
         </div>
         <div className="srch_bar">
           <div className="stylish-input-group">
-            <button className="btn text-danger">
+            <button className="btn text-danger" onClick={logout}>
               Salir
             </button>
           </div>
         </div>
       </div>
-      {/* <!-- Searchbox Fin --> */}
+
     </>
   )
 }
