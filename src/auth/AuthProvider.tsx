@@ -27,7 +27,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async ({ email, password }: { email: string, password: string }) => {
     const response = await fetchWithoutToken('login', { email, password }, 'POST')
     if (response.ok) {
-      console.log('respuesta del login', response)
+      localStorage.setItem('token', response.token);
       setAuth({
         _id: response.user._id,
         checking: false,
