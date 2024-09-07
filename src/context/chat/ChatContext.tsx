@@ -2,7 +2,7 @@ import { createContext, useReducer } from "react";
 import { ChatReducer } from "./ChatReducer";
 import { ChatContextType } from "../../types/chat";
 
-export const ChatContext = createContext<ChatContextType | null>(null);
+export const ChatContext = createContext<ChatContextType>({} as ChatContextType);
 
 const initialState = {
   uid: '',

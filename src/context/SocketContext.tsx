@@ -4,10 +4,10 @@ import { AuthContext } from '../auth/AuthProvider';
 import { ChatContext } from './chat/ChatContext';
 import { types } from '../types/reducerTypes/types';
 import { AuthContextType } from '../types/auth';
-import { ChatContextType } from '../types/chat';
+import { ChatContextType, SocketContextType } from '../types/chat';
 
 
-export const SocketContext = createContext({});
+export const SocketContext = createContext<SocketContextType>({} as SocketContextType);
 
 export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
   const { socket, online, conectarSocket, desconectarSocket } = useSocket('http://localhost:3000');

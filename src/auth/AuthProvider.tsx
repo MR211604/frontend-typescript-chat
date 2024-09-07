@@ -3,7 +3,7 @@ import { fetchWithoutToken, fetchWithToken } from "../helpers/fetch";
 import { AuthContextType } from "../types/auth";
 
 
-export const AuthContext = createContext<AuthContextType | null>(null);
+export const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 const initialState = {
   _id: null,
