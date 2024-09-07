@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext, } from "../auth/AuthProvider";
 import { toast, Toaster } from "sonner";
-import { AuthContextType } from "../types/types";
+import { AuthContextType } from "../types/auth";
 
 type Form = {
   name: string,

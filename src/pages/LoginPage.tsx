@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../auth/AuthProvider";
 import { toast, Toaster } from "sonner";
-import { AuthContextType } from "../types/types";
+import { AuthContextType } from "../types/auth";
 
 type Form = {
   email: string,
@@ -51,7 +51,7 @@ export default function LoginPage() {
     //Llamar al metodo de login
     const { email, password } = form
     const response = await login({ email, password })
-    if (!response.ok) {      
+    if (!response.ok) {
       toast.error(`Error: ${response.message}`)
     } else {
       toast.success('Login successfully')
