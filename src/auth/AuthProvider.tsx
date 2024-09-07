@@ -1,14 +1,7 @@
 import { createContext, useCallback, useState } from "react"
 import { fetchWithoutToken, fetchWithToken } from "../helpers/fetch";
-import { InitialState } from "../types/types";
+import { AuthContextType } from "../types/auth";
 
-export type AuthContextType = {
-  login: (data: { email: string, password: string }) => void,
-  register: (data: { name: string, email: string, password: string }) => void,
-  verifyToken: () => void,
-  logout: () => void,
-  Auth: InitialState
-}
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
@@ -36,11 +29,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         email: response.user.email,
       })
     }
+    return response
   }
 
   const register = async ({ name, email, password }: { name: string, email: string, password: string }) => {
-    const response = await fetchWithoutToken('register', { name, email, password }, 'POST')
+    const response = await fetchWithoutToken('register', { name, email, password }, 'POST')  
     if (response.ok) {
+      localStorage.setItem('token', response.token);
       setAuth({
         _id: response.user._id,
         checking: false,
@@ -50,6 +45,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       })
       return true
     }
+    return response
   }
 
   //Esto es diferente debido a que estara dentro de un useEffect
