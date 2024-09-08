@@ -1,5 +1,14 @@
+import { monthHour } from "../helpers/times"
+import { Message } from "../types/chat"
 
-export default function IncomingMessage() {
+interface Props {
+  message: Message
+}
+
+export default function IncomingMessage({ message }: Props) {
+
+  console.log('props', message)
+
   return (
     <>
       <div className="incoming_msg">
@@ -8,9 +17,8 @@ export default function IncomingMessage() {
         </div>
         <div className="received_msg">
           <div className="received_withd_msg">
-            <p>Test which is a new approach to have all
-              solutions</p>
-            <span className="time_date"> 11:01 AM | June 9</span>
+            <p>{message.message.trim()}</p>
+            <span className="time_date"> {monthHour(message.createdAt)} </span>
           </div>
         </div>
       </div>

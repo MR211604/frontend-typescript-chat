@@ -1,8 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { useContext, useEffect } from "react"
-import { AuthContext, AuthContextType } from "../auth/AuthProvider"
+import { AuthContext } from "../auth/AuthProvider"
 import PublicRoute from "./PublicRoute"
 import PrivateRoute from "./PrivateRoute"
+import { AuthContextType } from "../types/auth"
 
 type Props = {}
 

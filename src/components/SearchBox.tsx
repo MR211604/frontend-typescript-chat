@@ -1,5 +1,6 @@
 import { useContext } from "react"
-import { AuthContext, AuthContextType } from "../auth/AuthProvider"
+import { AuthContext } from "../auth/AuthProvider"
+import { AuthContextType } from "../types/auth"
 
 export default function SearchBox() {
 

@@ -1,12 +1,20 @@
+import { monthHour } from "../helpers/times"
+import { Message } from "../types/chat"
 
-export default function OutgoingMessage() {
+interface Props {
+  message: Message
+}
+
+//TODO: Crear un tipo para la interfaz del mensaje y desestructurar el mensaje, la fecha y la hora
+export default function OutgoingMessage({ message }: Props) {
+
+
   return (
     <>
       <div className="outgoing_msg">
         <div className="sent_msg">
-          <p>Test which is a new approach to have all
-            solutions</p>
-          <span className="time_date"> 11:01 AM | June 9</span>
+          <p>{message.message.trim()}</p>
+          <span className="time_date"> { monthHour(message.createdAt) } </span>
         </div>
       </div>
     </>

@@ -35,6 +35,15 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
     })
   }, [socket, dispatch])
 
+  useEffect(() => {
+    socket?.on('mensaje-personal', (payload) => {
+      dispatch({
+        type: types.nuevoMensaje,
+        payload
+      })
+    })
+  }, [socket, dispatch])
+
   return (
     <SocketContext.Provider value={{ socket, online }}>
       {children}

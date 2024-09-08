@@ -3,6 +3,7 @@ import { ChatContext } from "../context/chat/ChatContext"
 import { types } from "../types/reducerTypes/types"
 import { ChatContextType } from "../types/chat"
 import { Users } from "../types/user"
+import { fetchWithToken } from "../helpers/fetch"
 
 interface Props {
   user: Users
@@ -12,11 +13,19 @@ export default function SidebarChatitem({ user }: Props) {
 
   const { chatState, dispatch } = useContext(ChatContext) as ChatContextType
 
-  const onClick = () => {
+  const onClick = async () => {
+    
     dispatch({
       type: types.activarChat,
       payload: user._id
     })
+
+    const response = await fetchWithToken(`messages/${user._id}`)
+    dispatch({
+      type: types.cargarMensajes,
+      payload: response.messages
+    })
+
   }
 
   return (
